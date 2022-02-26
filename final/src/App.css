@@ -1,0 +1,20 @@
+.App {
+  text-align: center;
+  height: 100vh;
+  background: #403A3E;  /* https://uigradients.com/#Poncho */
+  background: -webkit-linear-gradient(to right, #BE5869, #403A3E);  
+  background: linear-gradient(to right, #BE5869, #403A3E); 
+}
+
+.title{
+  display: flex;
+  text-align: center;
+  color: aliceblue;
+  font-size: 3rem;
+}
+
+.text-under{
+  text-align: center;
+  color: aliceblue;
+  font-size: 1.5rem;
+}
