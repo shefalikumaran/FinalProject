@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from 'react-router-dom'; 
 
-const Recipe = ({title, image}) => {
+const Recipe = ({title, image, url}) => {
     return(
        <div>
            <h1> {title}</h1>
-           <img src= {image}/>
+           <a href={url}><img src= {image}/></a> 
        </div>
     );
 }

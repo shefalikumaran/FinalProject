@@ -2,19 +2,19 @@ import logo from './logo.svg';
 import './App.css';
 import React, { useEffect, useState } from "react";
 import Recipe from './Recipe'; 
+import DietaryPref from './DietaryPref'; 
+import Checks from './Checks';
 
 //used API tutorial from: https://www.youtube.com/watch?v=U9T6YkEDkMo 
 function App() {
-
   const APP_ID = "a16dd694";
   const APP_KEY = "fcc52c64a12d9b76eb4569a4f2616d83";
-
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState(''); 
   const [query,setQuery] = useState ('');
 
   useEffect (  () => {
-    getRecipes();
+    getRecipes(); 
   }, [query]);
 
   const getRecipes = async () => {
@@ -36,25 +36,32 @@ function App() {
 
   return (
     <div className="App">
-      <span className="title">Welcome To Food Saver! </span>
-      <span className="text-under">Have any leftover ingredients and don't know what to do with them? 
-        Click the button to input any ingredient and find recipes!
-      </span>
+      <header className="header">
+        <div className="logo"> <span className="title">FoodSaver</span></div>
+        <span className="text-under">Have any leftover ingredients and don't know what to do with them? 
+          Input any ingredient below to find recipes! 
+        </span>
+      </header>
+      <Checks></Checks>
       <div>
         <form onSubmit={getSearch} className="search-form">
-          <input className="search-bar" type="text" value={search} onChange={updateSearch}/>
-          <button className="search-button" type="submit">Search Ingredient</button>
+          <input className="search-bar" type="text" value={search} onChange={updateSearch}></input>
+          <button className="search-button" >Search Ingredient</button>
         </form> 
-        {recipes.map(recipe =>(
-          <Recipe 
-          title={recipe.recipe.label}
-          image={recipe.recipe.image} 
-          />
-        ))} 
-      </div>
+        <div className='indivRecipe'>        
+            {recipes.map(recipe =>(
+            <Recipe 
+            title={recipe.recipe.label}
+            image={recipe.recipe.image} 
+            url={recipe.recipe.url}
+            />
+          ))} 
+        </div>
 
+      </div>
     </div>
   );
 }
-
 export default App;
+
+
